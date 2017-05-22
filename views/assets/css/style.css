@@ -266,14 +266,15 @@ a:focus {
 portfolio image
 **/
 .portfolio-img {
-	position: absolute;
+	/*position: absolute;*/
 	height: 100%;
+	width:100%;
 	left: 0;
 }
 
 
 .pofolioCollage {
-	 width:33%;
+	 /*width:33%;*/
 	 position:relative;
 	 height: 290px;
 }
