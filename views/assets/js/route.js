@@ -8,11 +8,20 @@
 	    .when("/portfolio", {
 	        templateUrl : "portfolio.html"
 	    })
-	    .when("/green", {
-	        templateUrl : "green.htm"
+	    .when("/blog", {
+	        templateUrl : "blog.html"
 	    })
-	    .when("/blue", {
-	        templateUrl : "blue.htm"
+	    .when("/about", {
+	        templateUrl : "about.html"
+	    })
+	    .when("/contact", {
+	        templateUrl : "contact.html"
+	    })
+	    .when("/singlePost", {
+	        templateUrl : "single-post.html"
+	    })
+	    .when("/singleProject", {
+	        templateUrl : "single-project.html"
 	    });
 	});
 
