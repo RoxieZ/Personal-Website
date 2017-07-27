@@ -20,8 +20,9 @@
 	    .when("/singlePost", {
 	        templateUrl : "single-post.html"
 	    })
-	    .when("/singleProject", {
-	        templateUrl : "single-project.html"
+	    .when("/singleProject/:id", {
+	        templateUrl : "single-project.html",
+	        controller : "projectCtrl"
 	    });
 	});
 
