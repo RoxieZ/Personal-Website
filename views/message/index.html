@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="./css/main.css">
+
+        <link rel="import" href="postNoteBundle.html">
+    </head>
+    <body>
+
+        <div id="postBoard">
+        	<div class="banner">
+        		<div id="addNote">
+        			<div id="plusIcon"></div>
+        			<div>Add Note</div>
+        		</div>
+        	</div>
+
+        	<div id="board">	
+
+        	</div>
+
+            <div id="editWindow">
+                <div id="editBanner" class="editColorBanner red"></div>
+                <div class="editWindowContainer">
+                    <div id="colorSelector">
+                        <div id="redSqure" class="squre red"></div>
+                        <div id="greenSqure" class="squre green"></div>
+                        <div id="yellowSqure" class="squre yellow"></div>
+                        <div id="blueSqure" class="squre blue"></div>
+                    </div>
+                    <div class="editContent">
+                        <input class="editTile" type="text" placeholder="Untitled">
+                        <textarea class="editBody" placeholder="Just start typing here"></textarea>
+                    </div>
+                    <div class='editButtonGroup'>
+                        <div id="cancelButton" class="editButton">Cancel</div>
+                        <div id="addButton" class="editButton">Add</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deleteWindow">
+                <div class="deleteTextGroup">
+                    <div class="deleteTitle">Delete Note</div>
+                    <div class="deleteInfo">Are you sure you want to delete this note?</div>
+                </div>
+                <div class='deleteButtonGroup'>
+                    <div id="cancelDelete" class="deleteButton">Cancel</div>
+                    <div id="deleteButton" class="deleteButton">Delete</div>
+                </div>
+            </div>
+
+        	</div>
+        </div>
+
+        <script src="./js/main.js"></script>
+    </body>
+</html>

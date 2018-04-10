@@ -1,0 +1,591 @@
+<html><head><meta charset="UTF-8"><template>
+	<style>
+.red{
+	background-color: rgb(250, 171, 177);
+}
+
+.green{
+	background-color: rgb(183, 237, 210);
+}
+
+.yellow{
+	background-color: rgb(251, 220, 175);
+}
+
+.blue{
+	background-color: rgb(175, 205, 251);
+}
+
+.postContainer{
+	position: relative;
+	float: left;
+
+	width: 300px;
+	margin-top: 30px;
+}
+
+.colorBanner{
+	position: relative;
+	float: left;
+
+	width: 94%;
+	height: 6px;
+	margin-left: 3%;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.postIt{
+	position: relative;
+	float: left;
+
+	width: 94%;
+	height: 200px;
+
+	margin-left: 3%;
+	border: 0.5px solid #f3f2f2;
+	box-shadow: -1px 1px 3px #f2f2f2;
+	background-color: #fff;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.postContent{
+	position: relative;
+	float: left;
+
+	width: 90%;
+	margin-left: 5%;
+	margin-top: 5%;
+}
+
+.title{
+	width: 100%;
+	height: 50px;
+	border-bottom: 0.5px solid #f3f2f2;
+	line-height: 50px;
+	color: #666;
+}
+
+.titleText{
+	position: relative;
+	float: left;
+	width: 70%;
+	margin-top: 10px;
+}
+
+.editGroup{
+	position: relative;
+	float: right;
+	width: 25%;
+	height: 40px;
+}
+
+.icon{
+	position: relative;
+	
+	width: 35%;
+	height: 40px;
+
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 10px;
+}
+
+#edit{
+	float: left;
+	background-image: url("res/pencil-edit-button.svg");
+}
+
+#delete{
+	float: right;
+	background-image: url("res/rubbish-bin-delete-button.svg");
+}
+
+.body{
+	margin-top: 10px;
+	width: 100%;
+	color: #888;
+	font-size: 13px;
+}
+
+
+
+
+#editWindow{
+	display: none;
+	position: fixed;
+	width: 400px;
+	margin-left: 20%;
+	height: 500px;
+
+	margin-top: 50px;
+	z-index: 1;
+}
+
+
+.editColorBanner{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 10px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.editWindowContainer{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	border: 0.5px solid #f3f2f2;
+	box-shadow: -1px 1px 3px #f2f2f2;
+	background-color: #fff;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+#colorSelector{
+	width: 90%;
+	height: 50px;
+	margin-left: 5%;
+}
+
+.squre{
+	position: relative;
+	float: left;
+	width: 20px;
+	height: 20px;
+	border-radius: 3px;
+	background-size: 20px;
+	margin-right: 2%;
+	margin-top: 15px
+}
+
+.selectBorder{
+	border: 1px solid #888;
+}
+
+.editContent{
+	position: relative;
+	float: left;
+	width: 90%;
+	margin-left: 5%;
+	height: 370px;
+}
+
+.editTile{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 60px;
+	border: 0px;
+}
+
+input[type="text"]
+{
+    font-size:20px;
+    font-style: italic;
+    font-weight: lighter;
+    color: #888;
+}
+
+::placeholder{
+	color: #ccc;
+}
+
+textarea{
+	resize: none;
+	font-family: Arial;
+	overflow:hidden;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+    font-family: Arial;
+}
+
+.editBody{
+	width: 100%;
+	height: 290px;
+	border: 0px;
+	color: #888;
+}
+
+.editButtonGroup{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 80px;
+	background-color: #fcfcf7;
+
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.editButton{
+	position: relative;
+	width: 80px;
+	height: 35px;
+	margin-top: 22px;
+	
+	color: #fff;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 35px;
+	font-size: 13px;
+
+}
+
+#cancelButton{
+	float: left;
+	margin-left: 5%;
+	background-color: #ccc;
+}
+
+#addButton{
+	float: right;
+	margin-right: 5%;
+	background-color: #c2e3ea;
+}
+
+.titlebreak{
+  max-height: 2.4em;
+}
+
+.bodybreak{
+  max-height: 8.4em;
+}
+
+.block-with-text {
+  overflow: hidden;
+  position: relative; 
+  line-height: 1.2em;
+  text-align: justify;  
+  margin-right: -1em;
+  padding-right: 1em;
+}
+
+.block-with-text:before {
+  content: '...';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.block-with-text:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
+}
+</style>
+	<div class="postContainer">
+		<div class="colorBanner"></div>
+		<div class="postIt">
+			<div class="postContent">
+				<div class="title">
+					<div class="titleText block-with-text titlebreak"></div>
+					<div class="editGroup">
+						<div id="edit" class="icon"></div>
+						<div id="delete" class="icon"></div>
+					</div>
+				</div>
+				<div class="body block-with-text bodybreak"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="editWindow">
+        <div id="editBanner" class="editColorBanner red"></div>
+        <div class="editWindowContainer">
+            <div id="colorSelector">
+                <div id="redSqure" class="squre red"></div>
+                <div id="greenSqure" class="squre green"></div>
+                <div id="yellowSqure" class="squre yellow"></div>
+                <div id="blueSqure" class="squre blue"></div>
+            </div>
+            <div class="editContent">
+                <input class="editTile" type="text" placeholder="Untitled">
+                <textarea class="editBody" placeholder="Just start typing here"></textarea>
+            </div>
+            <div class="editButtonGroup">
+                <div id="cancelButton" class="editButton">Cancel</div>
+                <div id="addButton" class="editButton">Save</div>
+            </div>
+        </div>
+    </div>
+
+</template>
+<script type="text/javascript">"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _CustomElement() {
+    return Reflect.construct(HTMLElement, [], this.__proto__.constructor);
+}
+
+;
+Object.setPrototypeOf(_CustomElement.prototype, HTMLElement.prototype);
+Object.setPrototypeOf(_CustomElement, HTMLElement);
+(function e(t, n, r) {
+    function s(o, u) {
+        if (!n[o]) {
+            if (!t[o]) {
+                var a = typeof require == "function" && require;if (!u && a) return a(o, !0);if (i) return i(o, !0);throw new Error("Cannot find module '" + o + "'");
+            }var f = n[o] = { exports: {} };t[o][0].call(f.exports, function (e) {
+                var n = t[o][1][e];return s(n ? n : e);
+            }, f, f.exports, e, t, n, r);
+        }return n[o].exports;
+    }var i = typeof require == "function" && require;for (var o = 0; o < r.length; o++) {
+        s(r[o]);
+    }return s;
+})({ 1: [function (require, module, exports) {
+        var owner = (document._currentScript || document.currentScript).ownerDocument;
+
+        var PostNote = function (_CustomElement2) {
+            _inherits(PostNote, _CustomElement2);
+
+            function PostNote(name) {
+                _classCallCheck(this, PostNote);
+
+                var _this2 = _possibleConstructorReturn(this, (PostNote.__proto__ || Object.getPrototypeOf(PostNote)).call(this));
+
+                _this2.attachShadow({ mode: 'open' });
+                _this2._init();
+                _this2._color;
+
+                _this2._postContainer = _this2.shadowRoot.querySelector(".postContainer");
+                _this2._colorBanner = _this2.shadowRoot.querySelector('.colorBanner');
+                _this2._titleText = _this2.shadowRoot.querySelector('.titleText');
+                _this2._edit = _this2.shadowRoot.querySelector('#edit');
+                _this2._delete = _this2.shadowRoot.querySelector('#delete');
+                _this2._body = _this2.shadowRoot.querySelector('.body');
+
+                _this2._editWindow = _this2.shadowRoot.querySelector('#editWindow');
+                _this2._editBanner = _this2.shadowRoot.querySelector('#editBanner');
+                _this2._redSqure = _this2.shadowRoot.querySelector('#redSqure');
+                _this2._greenSqure = _this2.shadowRoot.querySelector('#greenSqure');
+                _this2._yellowSqure = _this2.shadowRoot.querySelector('#yellowSqure');
+                _this2._blueSqure = _this2.shadowRoot.querySelector('#blueSqure');
+                _this2._editTitle = _this2.shadowRoot.querySelector('input');
+                _this2._editBody = _this2.shadowRoot.querySelector('textarea');
+                _this2._cancelButton = _this2.shadowRoot.querySelector('#cancelButton');
+                _this2._addButton = _this2.shadowRoot.querySelector('#addButton');
+                _this2._delete = _this2.shadowRoot.querySelector('#delete');
+
+                _this2._onDelete = function () {};
+                return _this2;
+            }
+
+            _createClass(PostNote, [{
+                key: "_init",
+                value: function _init() {
+                    var template = owner.querySelector('template');
+                    var clone = template.content.cloneNode(true);
+
+                    this.shadowRoot.appendChild(clone);
+                }
+            }, {
+                key: "attributeChangedCallback",
+                value: function attributeChangedCallback(name, oldVal, newVal) {
+
+                    switch (name) {
+                        case 'bannercolor':
+                            this._colorBanner.classList.remove(oldVal);
+                            this._colorBanner.classList.add(newVal);
+                            this._editBanner.classList.remove(oldVal);
+                            this._editBanner.classList.add(newVal);
+                            this._setColorBorder(newVal);
+                            break;
+
+                        case 'title':
+                            this._titleText.innerHTML = newVal;
+                            this._editTitle.value = newVal;
+                            break;
+
+                        case 'body':
+                            this._formatTextareaInput(newVal); //_body.innerHTML = newVal;
+                            this._editBody.value = newVal;
+                            break;
+
+                        default:
+                            console.log(name);
+                            break;
+                    }
+                }
+            }, {
+                key: "connectedCallback",
+                value: function connectedCallback() {
+                    var _this3 = this;
+
+                    this._windowResize();
+                    window.addEventListener('resize', this._windowResize.bind(this));
+                    this._edit.addEventListener("click", this._onClickEdit.bind(this));
+                    this._redSqure.addEventListener("click", function () {
+                        _this3._changeColor(_this3, "red");_this3._activeSave();
+                    });
+                    this._greenSqure.addEventListener("click", function () {
+                        _this3._changeColor(_this3, "green");_this3._activeSave();
+                    });
+                    this._yellowSqure.addEventListener("click", function () {
+                        _this3._changeColor(_this3, "yellow");_this3._activeSave();
+                    });
+                    this._blueSqure.addEventListener("click", function () {
+                        _this3._changeColor(_this3, "blue");_this3._activeSave();
+                    });
+                    this._cancelButton.addEventListener("click", this._onClickCancel.bind(this));
+                    this._delete.addEventListener("click", function () {
+                        _this3._onDelete(_this3);
+                    });
+
+                    this._editTitle.addEventListener("input", this._activeSave.bind(this));
+                    this._editBody.addEventListener("input", this._activeSave.bind(this));
+
+                    this._edit.addEventListener("mouseover", function () {
+                        _this3._iconHover(_this3._edit, "edit");
+                    });
+                    this._delete.addEventListener("mouseover", function () {
+                        _this3._iconHover(_this3._delete, "delete");
+                    });
+                    this._edit.addEventListener("mouseout", function () {
+                        _this3._iconHoverOut(_this3._edit, "edit");
+                    });
+                    this._delete.addEventListener("mouseout", function () {
+                        _this3._iconHoverOut(_this3._delete, "delete");
+                    });
+                }
+            }, {
+                key: "_windowResize",
+                value: function _windowResize() {
+                    // this._editWindow.style.marginLeft = (window.innerWidth - 400)/2 + "px";
+                    // console.log(this._editWindow.style.marginLeft);
+                    // console.log(window.innerWidth);
+                }
+            }, {
+                key: "_formatTextareaInput",
+                value: function _formatTextareaInput(newVal) {
+                    var lins = newVal.split(/\n/g);
+                    this._body.innerHTML = lins.join("<br>");
+                }
+            }, {
+                key: "_setColorBorder",
+                value: function _setColorBorder(newVal) {
+                    switch (newVal) {
+                        case 'red':
+                            this._redSqure.classList.add("selectBorder");
+                            this._greenSqure.classList.remove("selectBorder");
+                            this._yellowSqure.classList.remove("selectBorder");
+                            this._blueSqure.classList.remove("selectBorder");
+                            break;
+                        case 'green':
+                            this._redSqure.classList.remove("selectBorder");
+                            this._greenSqure.classList.add("selectBorder");
+                            this._yellowSqure.classList.remove("selectBorder");
+                            this._blueSqure.classList.remove("selectBorder");
+                            break;
+                        case 'yellow':
+                            this._redSqure.classList.remove("selectBorder");
+                            this._greenSqure.classList.remove("selectBorder");
+                            this._yellowSqure.classList.add("selectBorder");
+                            this._blueSqure.classList.remove("selectBorder");
+                            break;
+                        case 'blue':
+                            this._redSqure.classList.remove("selectBorder");
+                            this._greenSqure.classList.remove("selectBorder");
+                            this._yellowSqure.classList.remove("selectBorder");
+                            this._blueSqure.classList.add("selectBorder");
+                            break;
+                        default:
+                            break;
+
+                    }
+                }
+            }, {
+                key: "_iconHover",
+                value: function _iconHover(node, name) {
+                    if (name == "edit") {
+                        node.style.backgroundImage = "url('./res/pencil-edit-button-hover.svg')";
+                    } else {
+                        node.style.backgroundImage = 'url("./res/rubbish-bin-delete-button-hover.svg")';
+                    }
+                }
+            }, {
+                key: "_iconHoverOut",
+                value: function _iconHoverOut(node, name) {
+                    if (name == "edit") {
+                        node.style.backgroundImage = "url('./res/pencil-edit-button.svg')";
+                    } else {
+                        node.style.backgroundImage = 'url("./res/rubbish-bin-delete-button.svg")';
+                    }
+                }
+            }, {
+                key: "_onClickEdit",
+                value: function _onClickEdit() {
+                    this._windowResize();
+                    this._addButton.style.backgroundColor = "#c2e3ea";
+                    this._editWindow.style.display = "block";
+                    this._color = this.getAttribute("bannercolor");
+                    this._changeColor(this, this._color);
+                }
+            }, {
+                key: "_onClickCancel",
+                value: function _onClickCancel() {
+                    this._editWindow.style.display = "none";
+                }
+            }, {
+                key: "_onClickAdd",
+                value: function _onClickAdd() {
+                    this.setAttribute("title", this._editTitle.value);
+                    this.setAttribute("body", this._editBody.value);
+                    this.setAttribute("bannercolor", this._color);
+                    this._editWindow.style.display = "none";
+                    this._addButton.removeEventListener("click", this._onClickAdd.bind(this));
+                }
+            }, {
+                key: "_changeColor",
+                value: function _changeColor(_this, color) {
+                    _this._color = color;
+                    _this._editBanner.classList.remove("red");
+                    _this._editBanner.classList.remove("green");
+                    _this._editBanner.classList.remove("yellow");
+                    _this._editBanner.classList.remove("blue");
+                    _this._editBanner.classList.add(color);
+                    _this._setColorBorder(color);
+                }
+            }, {
+                key: "_activeSave",
+                value: function _activeSave() {
+                    this._addButton.style.backgroundColor = "#5eb6bd";
+                    this._addButton.addEventListener("click", this._onClickAdd.bind(this), { once: true });
+                }
+            }, {
+                key: "onDelete",
+                set: function set(cb) {
+                    this._onDelete = cb;
+                }
+            }], [{
+                key: "observedAttributes",
+                get: function get() {
+                    return ['bannercolor', 'title', 'body'];
+                }
+            }]);
+
+            return PostNote;
+        }(_CustomElement);
+
+        ;
+
+        window.customElements.define('post-note', PostNote);
+    }, {}] }, {}, [1]);</script></head><body></body></html>

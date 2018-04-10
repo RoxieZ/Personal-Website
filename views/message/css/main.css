@@ -1,0 +1,294 @@
+body{
+	margin:0;
+	font-family: Arial;
+	background-color: #fcfcf7;
+}
+
+.red{
+	background-color: rgb(250, 171, 177);
+}
+
+.green{
+	background-color: rgb(183, 237, 210);
+}
+
+.yellow{
+	background-color: rgb(251, 220, 175);
+}
+
+.blue{
+	background-color: rgb(175, 205, 251);
+}
+
+#postBoard{
+	position: relative;
+	float: left;
+	width: 100%;
+}
+
+.banner{
+	width: 100%;
+	height: 70px;
+	background-color: #3b3f44;
+}
+
+#addNote{
+	position: relative;
+	float: right;
+	margin-right: 4%;
+	margin-top: 15px;
+	margin-bottom: 2%;
+	width: 100px;
+	height: 30px;
+	background-color: rgb(94, 182, 189);
+	border-radius: 5px;
+	color: #fff;
+	padding: 5px 12px 5px 12px;
+	text-align: right;
+	line-height: 30px;
+}
+
+#plusIcon{
+	position: relative;
+	float: left;
+
+	width: 20px;
+	height: 20px;
+ 	background-image:url("./res/add-plus-button.svg");
+ 	background-size: 15px;
+ 	background-position: center;
+ 	background-repeat: no-repeat;
+ 	margin-top: 5px;
+}
+
+#board{
+	position: relative;
+	float: left;
+
+	width: 94%;
+	margin-left: 3%;
+}
+
+#editWindow{
+	display: none;
+	position: fixed;
+	width: 60%;
+	height: 500px;
+
+	margin-top: 50px;
+	margin-left: 20%;
+	z-index: 1;
+}
+
+
+.editColorBanner{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 10px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.editWindowContainer{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	border: 0.5px solid #f3f2f2;
+	box-shadow: -1px 1px 3px #f2f2f2;
+	background-color: #fff;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+#colorSelector{
+	width: 90%;
+	height: 50px;
+	margin-left: 5%;
+}
+
+.squre{
+	position: relative;
+	float: left;
+	width: 20px;
+	height: 20px;
+	border-radius: 3px;
+	background-size: 20px;
+	margin-right: 2%;
+	margin-top: 15px
+}
+
+.selectBorder{
+	border: 1px solid #888;
+}
+
+.editContent{
+	position: relative;
+	float: left;
+	width: 90%;
+	margin-left: 5%;
+	height: 370px;
+}
+
+.editTile{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 60px;
+	border: 0px;
+}
+
+input[type="text"]
+{
+    font-size:20px;
+    font-style: italic;
+    font-weight: lighter;
+    color: #888;
+}
+
+::placeholder{
+	color: #ccc;
+}
+
+textarea{
+	resize: none;
+	font-family: Arial;
+	overflow:hidden;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+    font-family: Arial;
+}
+
+.editBody{
+	width: 100%;
+	height: 290px;
+	border: 0px;
+	color: #888;
+}
+
+.editButtonGroup{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 80px;
+	background-color: #fcfcf7;
+
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.editButton{
+	position: relative;
+	width: 80px;
+	height: 35px;
+	margin-top: 22px;
+	
+	color: #fff;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 35px;
+	font-size: 13px;
+
+}
+
+#cancelButton{
+	float: left;
+	margin-left: 5%;
+	background-color: #ccc;
+}
+
+#addButton{
+	float: right;
+	margin-right: 5%;
+	background-color: #c2e3ea;
+}
+
+.deleteWindow{
+	display: none;
+	position: fixed;
+	width: 30%;
+	height: 250px;
+	margin-top: 100px;
+	margin-left: 35%;
+	background-color: #fcfcf7;
+	border: 0.5px solid #f3f2f2;
+	box-shadow: -1px 1px 3px #f2f2f2;
+	border-radius: 10px;
+}
+
+.deleteTextGroup{
+	position: relative;
+	float: left;
+
+	width: 100%;
+	height: 180px;
+	background-color: #fff;
+}
+
+.deleteTitle{
+	position: relative;
+	float: left;
+
+	width: 86%;
+	height: 30px;
+	margin-left: 10%;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	line-height: 30px;
+	color: #888;
+
+	font-size: 17px;
+}
+
+.deleteInfo{
+	position: relative;
+	float: left;
+
+	width: 80%;
+	height: 30px;
+	margin-left: 10%;
+	color: #aaa;
+
+	font-size: 14px;
+}
+
+.deleteButtonGroup{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 80px;
+	background-color: #fcfcf7;
+
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.deleteButton{
+	position: relative;
+	width: 80px;
+	height: 35px;
+	margin-top: 22px;
+	
+	color: #fff;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 35px;
+	font-size: 13px;
+
+}
+
+#cancelDelete{
+	float: left;
+	margin-left: 5%;
+	background-color: #ccc;
+}
+
+#deleteButton{
+	float: right;
+	margin-right: 5%;
+	background-color: rgb(94, 182, 189);
+}
