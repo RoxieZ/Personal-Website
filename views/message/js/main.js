@@ -140,33 +140,7 @@ board.insertBefore(node, board.firstChild);
 
 board.insertBefore(document.createElement('post-note'), board.firstChild);
 board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
+
 
 
 
