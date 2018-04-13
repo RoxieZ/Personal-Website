@@ -14,6 +14,7 @@ board = document.querySelector("#board"),
 deleteWindow = document.querySelector(".deleteWindow"),
 cancelDelete = document.querySelector("#cancelDelete"),
 deleteButton = document.querySelector("#deleteButton"),
+background = document.querySelector('#body'),
 newColor = "red",
 deletePost = null;
 
@@ -99,7 +100,6 @@ let setColorBorder = function(newVal){
 
 let windowResize = function(){
 	board.style.width = (board.offsetWidth-board.offsetWidth%300)+"px";
-	console.log(board.style.width);
 	board.style.marginLeft = (window.innerWidth/2-board.offsetWidth/2)+"px";
 	deleteWindow.style.width = deleteWindow.offsetWidth<300 ? "300px":deleteWindow.offsetWidth;
 }
@@ -127,7 +127,46 @@ cancelDelete.addEventListener("click",()=>{
 editTitle.addEventListener("input",activeAdd);
 editBody.addEventListener("input",activeAdd);
 
+// if(background.style.height<window.innerHeight){
+	console.log(board.getBoundingClientRect(),window.innerHeight);
+// 	background.style.height = "100%";
+// }
 
+let node = document.createElement('post-note');
+node.setAttribute("bannercolor", "red");
+node.setAttribute("title","a");
+node.setAttribute("body","b");
+board.insertBefore(node, board.firstChild);
+
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
+board.insertBefore(document.createElement('post-note'), board.firstChild);
 
 
 
