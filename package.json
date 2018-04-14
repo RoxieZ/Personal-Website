@@ -8,8 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
     "ejs": "~2.5.5",
-    "express": "~4.9.8"
+    "express": "~4.9.8",
+    "express-session": "^1.15.6"
   },
   "repository": {
     "type": "git",

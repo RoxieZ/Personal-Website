@@ -271,13 +271,13 @@ textarea:focus, input:focus{
 
 #cancelButton{
 	float: left;
-	margin-left: 5%;
+	margin-left: 20px;
 	background-color: #ccc;
 }
 
 #addButton{
 	float: right;
-	margin-right: 5%;
+	margin-right: 20px;
 	background-color: #c2e3ea;
 }
 

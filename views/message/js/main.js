@@ -1,5 +1,6 @@
  /* Javascript */
-let newPost = document.querySelector("#addNote"),
+let pic = document.querySelector("#pic"),
+newPost = document.querySelector("#addNote"),
 editWindow = document.querySelector('#editWindow'),
 editBanner = document.querySelector('#editBanner'),
 redSqure = document.querySelector('#redSqure'),
@@ -99,14 +100,27 @@ let setColorBorder = function(newVal){
 }
 
 let windowResize = function(){
-	board.style.width = (board.offsetWidth-board.offsetWidth%300)+"px";
-	board.style.marginLeft = (window.innerWidth/2-board.offsetWidth/2)+"px";
+	console.log("resize");
+	let boardWidth = (window.innerWidth*.94-window.innerWidth*.94%300);
+	boardWidth = boardWidth < 200 ? 200 : boardWidth;
+	board.style.width = boardWidth+"px";
+	let boardLeft = (window.innerWidth/2-board.offsetWidth/2);
+	board.style.marginLeft = boardLeft +"px";
+
+	editWindow.style.width = window.innerWidth*.4<250 ? "250px" : window.innerWidth*.4+"px";
+	let editWindowTop = -(board.offsetWidth*0.6);
+	editWindowTop = editWindowTop < -760? "-760px" : editWindowTop;
+	editWindow.style.marginTop = editWindowTop+"px";
+	editWindow.style.marginLeft = editWindow.offsetWidth <= 250 ? window.innerWidth/2-125+"px" : "30%";
+
 	deleteWindow.style.width = deleteWindow.offsetWidth<300 ? "300px":deleteWindow.offsetWidth;
+	pic.style.height = board.offsetWidth*0.6/4*3+"px";
+	
 }
 
 
 windowResize();
-window.addEventListener('resize', windowResize);
+window.onresize = windowResize;
 
 newPost.addEventListener("click",()=>{
 	editWindow.style.display = "block";
