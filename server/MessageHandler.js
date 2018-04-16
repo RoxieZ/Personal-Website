@@ -6,7 +6,7 @@ module.exports =  class MessageHandler{
 	}
 
 	store(name,params,req,res){
-		let data = `{"color":"${params.color}", "msg":"${params.msg}"}`;
+		let data = `{"name":"${req.body.name}", "color":"${params.color}", "msg":"${req.body.msg}"}`;
 
 		fs.writeFile(this.path+name, data, { flag: 'wx' }, function (err) {
 		    if (err) throw err;
