@@ -6,7 +6,7 @@ module.exports =  class MessageHandler{
 	}
 
 	store(name,params,req,res){
-		let data = `{color:${params.color}, msg:${params.msg}}`;
+		let data = `{"color":"${params.color}", "msg":"${params.msg}"}`;
 
 		fs.writeFile(this.path+name, data, { flag: 'wx' }, function (err) {
 		    if (err) throw err;
@@ -16,21 +16,27 @@ module.exports =  class MessageHandler{
 
 	get(req,res){
 		let files = fs.readdirSync(this.path);
-		console.log(files);
-		let returnDate = null;
+		let returnDate = {};
 
-		for(let file of files){
-			if(file[0]!="."){
-				fs.readFile(this.path+file, (err, data)=>{
+		for(let i=0; i< files.length; i++){
+			if(files[i][0]!="."){
+				console.log(this.path+files[i]);
+				fs.readFile(this.path+files[i], (err, data)=>{
 				    if (err) {
 				        throw err;
 				    }
-				    console.log(data);
+				    else{
+
+					    returnDate[files[i]] = JSON.parse(data);
+					    if(i==files.length-1){
+
+							console.log(returnDate);
+					    	res.json(returnDate);
+					    }
+					}
 				})
 			}
-			
 		}
-		res.json(returnDate);
 	}
 
 	delete(req,res){
