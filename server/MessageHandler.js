@@ -7,11 +7,25 @@ module.exports =  class MessageHandler{
 
 	store(name,params,req,res){
 		let data = `{"name":"${req.body.name}", "color":"${params.color}", "msg":"${req.body.msg}"}`;
+		if (fs.existsSync(this.path+name)&&!params.color){
+			fs.unlink(this.path+name, (err) => {
+			  	if (err) throw err;
+			  	console.log('deleted');
+			  	res.json("It's deleted!");
+			});
+		}
+		else{
+			if(fs.existsSync(this.path+name)){
+				fs.unlink(this.path+name, (err) => {
+				  	if (err) throw err;
 
-		fs.writeFile(this.path+name, data, { flag: 'wx' }, function (err) {
-		    if (err) throw err;
-		    res.json("It's saved!");
-		});
+					fs.writeFile(this.path+name, data, { flag: 'wx' }, function (err) {
+					    if (err) throw err;
+					    res.json("It's saved!");
+					});
+				});
+			}
+		}
 	}
 
 	get(req,res){
@@ -39,11 +53,4 @@ module.exports =  class MessageHandler{
 		}
 	}
 
-	delete(req,res){
-
-	}
-
-	edit(name,params,req,res){
-
-	}
 }
