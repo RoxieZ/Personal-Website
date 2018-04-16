@@ -155,6 +155,14 @@ board.insertBefore(node, board.firstChild);
 board.insertBefore(document.createElement('post-note'), board.firstChild);
 board.insertBefore(document.createElement('post-note'), board.firstChild);
 
+let xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+        alert(xhr.responseText);
+    }
+}
+xhr.open('GET', 'http://roxiezhao.com/message', true);
+xhr.send(null);
 
 
 
