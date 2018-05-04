@@ -105,6 +105,18 @@ let windowResize = function(){
 }
 
 
+let getMessage = function(){
+	let xhr = new XMLHttpRequest();
+	xhr.addEventListener("load", loadMessage);
+	xhr.open("GET", "http://www.example.org/example.txt");
+	xhr.send();
+	}
+}
+
+let loadMessage = function(){
+	this.responseText;
+}
+
 windowResize();
 window.addEventListener('resize', windowResize);
 
