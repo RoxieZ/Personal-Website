@@ -8,18 +8,48 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link rel="stylesheet" href="./css/main.css">
-
+        <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
         <link rel="import" href="postNoteBundle.html">
     </head>
     <body>
-
+        <div id="body">
         <div id="postBoard">
         	<div class="banner">
         		<div id="addNote">
         			<div id="plusIcon"></div>
-        			<div>Add Note</div>
+        			<div id="addText">Message</div>
         		</div>
         	</div>
+
+            <div id="pic" class="slider-for ">
+                <div> <img src="./res/2.JPG"></div>
+                <div> <img src="./res/3.JPG"></div>
+                <div> <img src="./res/4.JPG"></div>
+                <div> <img src="./res/2.JPG"></div>
+                <div> <img src="./res/3.JPG"></div>
+                <div> <img src="./res/4.JPG"></div>
+                <div> <img src="./res/2.JPG"></div>
+                <div> <img src="./res/3.JPG"></div>
+                <div> <img src="./res/4.JPG"></div>
+                <div> <img src="./res/2.JPG"></div>
+                <div> <img src="./res/3.JPG"></div>
+                <div> <img src="./res/4.JPG"></div>
+            </div>
+            <div class="slider-nav">
+                <div> <img src="./res/2.JPG"></div>
+                <div> <img src="./res/3.JPG"></div>
+                <div> <img src="./res/4.JPG"></div>
+                <div> <img src="./res/2.JPG"></div>
+                <div> <img src="./res/3.JPG"></div>
+                <div> <img src="./res/4.JPG"></div>
+                <div> <img src="./res/2.JPG"></div>
+                <div> <img src="./res/3.JPG"></div>
+                <div> <img src="./res/4.JPG"></div>
+                <div> <img src="./res/2.JPG"></div>
+                <div> <img src="./res/3.JPG"></div>
+                <div> <img src="./res/4.JPG"></div>
+            </div>
 
         	<div id="board">	
 
@@ -58,7 +88,33 @@
 
         	</div>
         </div>
-
+        </div>
         <script src="./js/main.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="slick/slick.min.js"></script>
+        <script type="text/javascript">
+            $('.autoplay').slick({
+              slidesToShow: 1,
+              slidesToScroll: 2,
+              autoplay: true,
+              autoplaySpeed: 4000,
+            });
+             $('.slider-for').slick({
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              arrows: false,
+              fade: true,
+              asNavFor: '.slider-nav'
+            });
+            $('.slider-nav').slick({
+              slidesToShow: 7,
+              slidesToScroll: 1,
+              asNavFor: '.slider-for',
+              dots: true,
+              centerMode: true,
+              focusOnSelect: true
+            });
+        </script>
     </body>
 </html>
