@@ -124,7 +124,7 @@ let getMessage = function(){
 	xhr.addEventListener("load", loadMessage);
 	xhr.open("GET", "http://www.example.org/example.txt");
 	xhr.send();
-	}
+	
 }
 
 let loadMessage = function(){
