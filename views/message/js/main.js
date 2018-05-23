@@ -39,7 +39,7 @@ let onClickAdd = function(){
 	// }
 
 	var http = new XMLHttpRequest();
-	var url = "http://localhost:3000/api/message/store/"+editTitle.value+"?color="+newColor;
+	var url = "http://www.roxiezhao.com/api/message/store/"+editTitle.value+"?color="+newColor;
 	
 	var params = "name="+editTitle.value+"&"+"msg="+editBody.value;
 	http.open("POST", url, true);
@@ -181,7 +181,7 @@ xhr.onreadystatechange = function() {
         }
     }
 }
-xhr.open('GET', 'http://localhost:3000/api/message/get', true);
+xhr.open('GET', 'http://www.roxiezhao.com/api/message/get', true);
 xhr.send(null);
 
 
