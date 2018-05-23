@@ -5,8 +5,11 @@ module.exports =  class MessageHandler{
 		this.path = `${__dirname}/msg/`;
 	}
 
+	// http://localhost:3000/api/message/store/roxie?color=red
+	// body: name:xxx, msg:xxx
 	store(name,params,req,res){
 		let data = `{"name":"${req.body.name}", "color":"${params.color}", "msg":"${req.body.msg}"}`;
+		console.log(data);
 		if (fs.existsSync(this.path+name)&&!params.color){
 			fs.unlink(this.path+name, (err) => {
 			  	if (err) throw err;
@@ -24,6 +27,12 @@ module.exports =  class MessageHandler{
 					    res.json("It's saved!");
 					});
 				});
+			}
+			else{
+				fs.writeFile(this.path+name, data, { flag: 'wx' }, function (err) {
+					    if (err) throw err;
+					    res.json("It's saved!");
+					});
 			}
 		}
 	}

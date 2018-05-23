@@ -27,16 +27,34 @@ let activeAdd = function(){
 }
 
 let onClickAdd = function(){
-	if(editBody.value||editTitle.value){
-		let postNode = document.createElement("post-note");
-		postNode.setAttribute("bannercolor",newColor);
-		postNode.setAttribute("title",editTitle.value);
-		postNode.setAttribute("body",editBody.value);
-		postNode.onDelete = onDelete;
-		board.insertBefore(postNode, board.firstChild);
-		onClickCancel();
-		addButton.removeEventListener("click",onClickAdd);
+	// if(editBody.value||editTitle.value){
+	// 	let postNode = document.createElement("post-note");
+	// 	postNode.setAttribute("bannercolor",newColor);
+	// 	postNode.setAttribute("title",editTitle.value);
+	// 	postNode.setAttribute("body",editBody.value);
+	// 	postNode.onDelete = onDelete;
+	// 	board.insertBefore(postNode, board.firstChild);
+	// 	onClickCancel();
+	// 	addButton.removeEventListener("click",onClickAdd);
+	// }
+
+	var http = new XMLHttpRequest();
+	var url = "http://localhost:3000/api/message/store/"+editTitle.value+"?color="+newColor;
+	
+	var params = "name="+editTitle.value+"&"+"msg="+editBody.value;
+	http.open("POST", url, true);
+
+	//Send the proper header information along with the request
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	http.onreadystatechange = function() {//Call a function when the state changes.
+	    if(http.readyState == 4 && http.status == 200) {
+	        alert(http.responseText);
+	    }
 	}
+	http.send(params);
+
+	editWindow.style.display = "none";
 }
 
 let onDelete = function(node){
@@ -100,7 +118,6 @@ let setColorBorder = function(newVal){
 }
 
 let windowResize = function(){
-	console.log("resize");
 	let boardWidth = (window.innerWidth*.94-window.innerWidth*.94%300);
 	boardWidth = boardWidth < 200 ? 200 : boardWidth;
 	board.style.width = boardWidth+"px";
@@ -118,18 +135,6 @@ let windowResize = function(){
 	
 }
 
-
-let getMessage = function(){
-	let xhr = new XMLHttpRequest();
-	xhr.addEventListener("load", loadMessage);
-	xhr.open("GET", "http://www.example.org/example.txt");
-	xhr.send();
-	
-}
-
-let loadMessage = function(){
-	this.responseText;
-}
 
 windowResize();
 window.onresize = windowResize;
@@ -154,26 +159,29 @@ editTitle.addEventListener("input",activeAdd);
 editBody.addEventListener("input",activeAdd);
 
 // if(background.style.height<window.innerHeight){
-	console.log(board.getBoundingClientRect(),window.innerHeight);
+	// console.log(board.getBoundingClientRect(),window.innerHeight);
 // 	background.style.height = "100%";
 // }
 
-let node = document.createElement('post-note');
-node.setAttribute("bannercolor", "red");
-node.setAttribute("title","a");
-node.setAttribute("body","b");
-board.insertBefore(node, board.firstChild);
+let createNode = function(name){
+	let node = document.createElement('post-note');
+	node.setAttribute("bannercolor", name.color);
+	node.setAttribute("title",name.name);
+	node.setAttribute("body",name.msg);
+	board.insertBefore(node, board.firstChild);
+}
 
-board.insertBefore(document.createElement('post-note'), board.firstChild);
-board.insertBefore(document.createElement('post-note'), board.firstChild);
 
 let xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function() {
     if (xhr.readyState == XMLHttpRequest.DONE) {
-        alert(xhr.responseText);
+        let data = JSON.parse(xhr.responseText)
+        for(let p in data){
+        	createNode(data[p]);
+        }
     }
 }
-xhr.open('GET', 'http://roxiezhao.com/message', true);
+xhr.open('GET', 'http://localhost:3000/api/message/get', true);
 xhr.send(null);
 
 
